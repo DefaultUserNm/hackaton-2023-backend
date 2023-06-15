@@ -10,3 +10,44 @@ management:
     web:
       exposure:
         include: metrics,health,prometheus
+
+logbook:
+  filter:
+    enabled: true
+  exclude:
+    - /actuator/**
+    - /v3/api-docs**
+    - /swagger-ui/**
+    - /favicon.ico
+  secure-filter:
+    enabled: false
+  obfuscate:
+    headers:
+      - Authorization
+  format:
+    style: http
+
+hackaton:
+  auth:
+    enabled: true
+    filtered-paths:
+      - '/api/v1/documents[\s\S]*'
+      - '/api/v1/boxes[\s\S]*'
+    expiration-time: 86400000
+
+logging:
+  level:
+    root: ${LOG_LEVEL:INFO}
+    ru:
+      sbrf:
+        hackaton:
+          app:
+            configuration:
+              authentication:
+                HackatonSecurityFilter: DEBUG
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG

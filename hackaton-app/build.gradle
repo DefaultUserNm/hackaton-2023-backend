@@ -4,8 +4,13 @@ dependencies {
     implementation libs.springBootConfigurationProcessor
     implementation libs.springStarterMongo
 
+    implementation libs.logbookSpringBootStarter
+    implementation libs.apacheCommonsLang
+
     implementation libs.lombok
     annotationProcessor libs.lombok
+    implementation libs.mapstruct
+    annotationProcessor libs.mapstructProcessor
 
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
 }

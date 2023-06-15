@@ -4,3 +4,4 @@ spring:
       host: ${MONGO_HOST}
       port: ${MONGO_PORT}
       database: ${MONGO_DB}
+      auto-index-creation: true
