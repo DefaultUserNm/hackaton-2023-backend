@@ -1,4 +1,4 @@
-package ru.sbrf.hackaton.app.service;
+package ru.sbrf.hackaton.app.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -13,6 +13,7 @@ import ru.sbrf.hackaton.app.model.domain.entity.UserEntity;
 import ru.sbrf.hackaton.app.model.dto.AuthenticationPayload;
 import ru.sbrf.hackaton.app.model.dto.CreateUserRequest;
 import ru.sbrf.hackaton.app.repository.UserRepository;
+import ru.sbrf.hackaton.app.service.UserService;
 
 import java.util.ArrayList;
 import java.util.Optional;
