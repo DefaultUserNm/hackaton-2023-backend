@@ -8,6 +8,7 @@ import ru.sbrf.hackaton.app.mapper.ProductMapper;
 import ru.sbrf.hackaton.app.model.domain.entity.ProductEntity;
 import ru.sbrf.hackaton.app.model.dto.ProductDTO;
 import ru.sbrf.hackaton.app.repository.ProductRepository;
+import ru.sbrf.hackaton.app.service.ComponentService;
 import ru.sbrf.hackaton.app.service.ProductService;
 
 import java.util.Optional;
@@ -20,15 +21,21 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductMapper productMapper;
     private final ProductRepository productRepository;
+    private final ComponentService componentService;
 
     @Override
     public ProductDTO getProduct(ObjectId productId) {
-
         return productMapper.toProductDTO(
                 handleProductEntity(
                     productRepository.findById(productId)
                 )
         );
+    }
+
+    @Override
+    public void saveProduct(ProductDTO productDTO) {
+        componentService.saveAllComponents(productDTO.getComponents());
+        // TODO
     }
 
     private ProductEntity handleProductEntity(Optional<ProductEntity> optionalProductEntity) {

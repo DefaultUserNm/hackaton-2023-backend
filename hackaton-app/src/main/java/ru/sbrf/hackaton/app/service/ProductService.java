@@ -6,4 +6,5 @@ import ru.sbrf.hackaton.app.model.dto.ProductDTO;
 public interface ProductService {
 
     ProductDTO getProduct(ObjectId productId);
+    void saveProduct(ProductDTO productDTO);
 }
