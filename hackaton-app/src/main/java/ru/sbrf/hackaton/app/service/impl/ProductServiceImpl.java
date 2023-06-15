@@ -16,6 +16,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
+import static java.util.Comparator.comparing;
+import static java.util.Comparator.reverseOrder;
 import static ru.sbrf.hackaton.app.exception.HackatonBaseExceptionCode.FAILED_TO_GET_PRODUCT_ENTITY;
 
 @RequiredArgsConstructor
@@ -31,6 +33,7 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll()
                 .stream()
                 .map(productMapper::toProductDTO)
+                .sorted(comparing(p -> p.getProducts().size(), reverseOrder()))
                 .toList();
     }
 
