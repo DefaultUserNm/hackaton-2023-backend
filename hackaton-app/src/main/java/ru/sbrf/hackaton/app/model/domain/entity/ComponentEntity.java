@@ -17,5 +17,5 @@ public class ComponentEntity {
     String name;
     String ci;
     String repoLink;
-    Set<Enum<Stack>> stack;
+    Set<Stack> stack;
 }
