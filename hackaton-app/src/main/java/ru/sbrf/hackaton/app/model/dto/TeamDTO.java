@@ -3,7 +3,6 @@ package ru.sbrf.hackaton.app.model.dto;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
-import ru.sbrf.hackaton.app.model.User;
 
 import java.util.List;
 
@@ -12,5 +11,5 @@ import java.util.List;
 public class TeamDTO {
     String name;
 
-    List<User> users;
+    List<UserDto> users;
 }
