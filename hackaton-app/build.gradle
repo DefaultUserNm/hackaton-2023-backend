@@ -1,0 +1,9 @@
+dependencies {
+    implementation libs.springBootStarterWeb
+    implementation libs.springBootConfigurationProcessor
+    implementation libs.springStarterMongo
+}
+
+jar {
+    enabled = false
+}

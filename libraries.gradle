@@ -1,0 +1,32 @@
+ext {
+    libs = [
+            // Spring Boot
+            'springBootStarter': 'org.springframework.boot:spring-boot-starter',
+            'springBootStarterWeb': 'org.springframework.boot:spring-boot-starter-web',
+            'springBootConfigurationProcessor': 'org.springframework.boot:spring-boot-configuration-processor',
+            'springBootStarterJpa': 'org.springframework.boot:spring-boot-starter-data-jpa',
+            'springStarterMongo': 'org.springframework.boot:spring-boot-starter-data-mongodb',
+            'springBootStarterValidation': 'org.springframework.boot:spring-boot-starter-validation',
+            'springKafka': 'org.springframework.kafka:spring-kafka',
+            'springBootStarterTest': 'org.springframework.boot:spring-boot-starter-test',
+            'springStarterOpenfeign': "org.springframework.cloud:spring-cloud-starter-openfeign:${springCloudVersion}",
+
+
+            // DB
+            'h2': 'com.h2database:h2',
+
+            // Code processing
+            'lombok': "org.projectlombok:lombok:${lombokVersion}",
+            'mapstruct': "org.mapstruct:mapstruct:${mapstructVersion}",
+
+            // Utils
+            'apacheCommonsLang': "org.apache.commons:commons-lang3:${apacheCommonsLangVersion}",
+
+            // Logging
+            'logbookSpringBootStarter': "org.zalando:logbook-spring-boot-starter:${logbookVersion}",
+
+            // Testing frameworks & deps
+            'spockCore': "org.spockframework:spock-core:${spockVersion}",
+            'spockSpring': "org.spockframework:spock-spring:${spockVersion}",
+    ]
+}

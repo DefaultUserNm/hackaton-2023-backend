@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management' version "${springDependencyPluginVersion}"
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = false
+}
+
+apply from: "${project.projectDir}/libraries.gradle"
+
+allprojects {
+    group = "${projectBasePackage}"
+    version = "${projectVersion}"
+
+    repositories {
+        mavenCentral()
+    }
+
+    compileJava {
+        options.compilerArgs += [
+                '-Amapstruct.defaultComponentModel=spring',
+                '-Amapstruct.unmappedTargetPolicy=IGNORE'
+        ]
+    }
+
+    tasks.withType(JavaCompile).tap {
+        configureEach {
+            options.release = 17
+        }
+    }
+}
+
+subprojects {
+    apply {
+        plugin("java")
+        plugin("groovy")
+        plugin("org.springframework.boot")
+        plugin("io.spring.dependency-management")
+    }
+
+    dependencies {
+        implementation libs.springBootStarterTest
+        testImplementation libs.spockCore
+        testImplementation libs.spockSpring
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
