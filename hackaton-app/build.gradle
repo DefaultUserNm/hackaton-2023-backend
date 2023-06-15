@@ -3,6 +3,9 @@ dependencies {
     implementation libs.springBootStarterActuator
     implementation libs.springBootConfigurationProcessor
     implementation libs.springStarterMongo
+
+    implementation libs.lombok
+    annotationProcessor libs.lombok
 }
 
 jar {
