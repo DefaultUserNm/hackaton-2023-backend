@@ -34,6 +34,7 @@ hackaton:
       - '/api/v1/documents[\s\S]*'
       - '/api/v1/boxes[\s\S]*'
       - '/api/v1/products[\s\S]*'
+      - '/api/v1/components[\s\S]*'
     expiration-time: 86400000
 
 logging:
