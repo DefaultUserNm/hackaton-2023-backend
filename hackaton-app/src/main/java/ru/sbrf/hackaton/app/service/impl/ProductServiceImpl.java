@@ -11,6 +11,7 @@ import ru.sbrf.hackaton.app.repository.ProductRepository;
 import ru.sbrf.hackaton.app.service.ComponentService;
 import ru.sbrf.hackaton.app.service.ProductService;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -24,6 +25,14 @@ public class ProductServiceImpl implements ProductService {
     private final ProductMapper productMapper;
     private final ProductRepository productRepository;
     private final ComponentService componentService;
+
+    @Override
+    public List<ProductDTO> getProducts() {
+        return productRepository.findAll()
+                .stream()
+                .map(productMapper::toProductDTO)
+                .toList();
+    }
 
     @Override
     public ProductDTO getProduct(ObjectId productId) {
