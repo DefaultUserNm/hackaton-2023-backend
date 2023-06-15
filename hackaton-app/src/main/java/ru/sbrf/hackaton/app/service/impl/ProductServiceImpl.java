@@ -11,7 +11,9 @@ import ru.sbrf.hackaton.app.repository.ProductRepository;
 import ru.sbrf.hackaton.app.service.ComponentService;
 import ru.sbrf.hackaton.app.service.ProductService;
 
+import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 import static ru.sbrf.hackaton.app.exception.HackatonBaseExceptionCode.FAILED_TO_GET_PRODUCT_ENTITY;
 
@@ -33,9 +35,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void saveProduct(ProductDTO productDTO) {
+    public ProductDTO saveProduct(ProductDTO productDTO) {
         componentService.saveAllComponents(productDTO.getComponents());
-        // TODO
+        if (productDTO.getProducts() != null) {
+            saveAllProducts(productDTO.getProducts());
+        }
+        productRepository.save(productMapper.toProductEntity(productDTO));
+        return productDTO;
     }
 
     private ProductEntity handleProductEntity(Optional<ProductEntity> optionalProductEntity) {
@@ -43,5 +49,11 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(
                         () -> new HackatonBaseException(FAILED_TO_GET_PRODUCT_ENTITY.name())
                 );
+    }
+
+    private void saveAllProducts(Set<ProductDTO> products) {
+        products.stream()
+                .filter(Objects::nonNull)
+                .forEach(this::saveProduct);
     }
 }
