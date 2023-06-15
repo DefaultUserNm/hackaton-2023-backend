@@ -1,4 +1,5 @@
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.ActiveProfiles
 import ru.sbrf.hackaton.app.Application
 import spock.lang.Specification
 
@@ -7,6 +8,7 @@ import spock.lang.Specification
  * @author alexander
  */
 
+@ActiveProfiles("TEST")
 @SpringBootTest(
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
         classes = [

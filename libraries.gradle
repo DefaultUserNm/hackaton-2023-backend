@@ -3,6 +3,7 @@ ext {
             // Spring Boot
             'springBootStarter': 'org.springframework.boot:spring-boot-starter',
             'springBootStarterWeb': 'org.springframework.boot:spring-boot-starter-web',
+            'springBootStarterActuator': 'org.springframework.boot:spring-boot-starter-actuator',
             'springBootConfigurationProcessor': 'org.springframework.boot:spring-boot-configuration-processor',
             'springBootStarterJpa': 'org.springframework.boot:spring-boot-starter-data-jpa',
             'springStarterMongo': 'org.springframework.boot:spring-boot-starter-data-mongodb',

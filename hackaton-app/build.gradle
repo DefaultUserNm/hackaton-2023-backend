@@ -1,5 +1,6 @@
 dependencies {
     implementation libs.springBootStarterWeb
+    implementation libs.springBootStarterActuator
     implementation libs.springBootConfigurationProcessor
     implementation libs.springStarterMongo
 }
