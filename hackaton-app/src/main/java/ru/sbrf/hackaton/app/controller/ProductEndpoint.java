@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.sbrf.hackaton.app.model.dto.ProductDTO;
 import ru.sbrf.hackaton.app.service.ProductService;
 
+import java.util.List;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
@@ -18,6 +20,11 @@ public class ProductEndpoint {
     private final ProductService productService;
 
     @GetMapping(produces = APPLICATION_JSON_VALUE)
+    public List<ProductDTO> getProducts() {
+        return productService.getProducts();
+    }
+
+    @GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
     public ProductDTO getProduct(@PathVariable(value = "id") String productId) {
         return productService.getProduct(new ObjectId(productId));
     }
