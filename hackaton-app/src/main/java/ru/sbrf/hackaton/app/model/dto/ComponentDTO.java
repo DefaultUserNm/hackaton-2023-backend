@@ -13,5 +13,5 @@ public class ComponentDTO {
     String name;
     String ci;
     String repoLink;
-    Set<Enum<Stack>> stack;
+    Set<Stack> stack;
 }
