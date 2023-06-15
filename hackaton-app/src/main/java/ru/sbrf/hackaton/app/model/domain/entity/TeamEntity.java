@@ -20,8 +20,4 @@ public class TeamEntity {
     String name;
 
     List<User> users;
-
-
-
-
 }
