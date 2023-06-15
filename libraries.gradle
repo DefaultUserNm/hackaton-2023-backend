@@ -19,6 +19,7 @@ ext {
             // Code processing
             'lombok': "org.projectlombok:lombok:${lombokVersion}",
             'mapstruct': "org.mapstruct:mapstruct:${mapstructVersion}",
+            'mapstructProcessor': "org.mapstruct:mapstruct-processor:${mapstructVersion}",
 
             // Utils
             'apacheCommonsLang': "org.apache.commons:commons-lang3:${apacheCommonsLangVersion}",
