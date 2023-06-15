@@ -1,0 +1,6 @@
+spring:
+  data:
+    mongodb:
+      host: 185.141.227.125
+      port: 27037
+      database: hackaton

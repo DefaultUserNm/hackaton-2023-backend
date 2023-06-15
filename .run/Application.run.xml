@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <option name="ACTIVE_PROFILES" value="STUB" />
+    <module name="hackaton-2023-backend.hackaton-app.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="ru.sbrf.hackaton.app.Application" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="ru.sbrf.hackaton.app.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
