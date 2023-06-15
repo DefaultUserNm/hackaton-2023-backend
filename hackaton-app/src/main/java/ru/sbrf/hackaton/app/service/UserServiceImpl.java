@@ -1,6 +1,7 @@
 package ru.sbrf.hackaton.app.service;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 import ru.sbrf.hackaton.app.configuration.properties.AuthenticationProperties;
@@ -54,11 +55,11 @@ public class UserServiceImpl implements UserService {
         UserEntity result;
         if (user.isPresent()) {
             result = user.get();
-            result.setPasswordHash(request.getPassword());
+            result.setPasswordHash(calculateHash(request.getPassword()));
         } else {
             result = new UserEntity()
                     .setLogin(request.getLogin())
-                    .setPasswordHash(request.getPassword())
+                    .setPasswordHash(calculateHash(request.getPassword()))
                     .setSessions(new ArrayList<>());
         }
 
@@ -68,7 +69,7 @@ public class UserServiceImpl implements UserService {
     }
 
     private boolean checkPassword(UserEntity user, String password) {
-        return user.getPasswordHash().equals(password);
+        return user.getPasswordHash().equals(calculateHash(password));
     }
 
     private Session generateSession() {
@@ -77,5 +78,9 @@ public class UserServiceImpl implements UserService {
                 .setId(new ObjectId())
                 .setCreateDate(now)
                 .setExpireDate(now + authenticationProperties.getExpirationTime());
+    }
+
+    private String calculateHash(String password) {
+        return DigestUtils.sha256Hex(password);
     }
 }
