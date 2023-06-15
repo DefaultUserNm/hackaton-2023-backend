@@ -12,5 +12,5 @@ public class ProductDTO {
     String name;
     Set<ProductDTO> products;
     Set<ComponentDTO> components;
-    // Set<Team> teams;
+    Set<TeamDTO> teams;
 }

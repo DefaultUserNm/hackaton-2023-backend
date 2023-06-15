@@ -19,5 +19,6 @@ public class ProductEntity {
     Set<ProductEntity> productEntities;
     @DocumentReference
     Set<ComponentEntity> componentEntities;
-    // Set<Team> teams;
+    @DocumentReference
+    Set<TeamEntity> teamEntities;
 }

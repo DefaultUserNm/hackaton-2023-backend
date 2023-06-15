@@ -10,6 +10,7 @@ import ru.sbrf.hackaton.app.model.dto.ProductDTO;
 import ru.sbrf.hackaton.app.repository.ProductRepository;
 import ru.sbrf.hackaton.app.service.ComponentService;
 import ru.sbrf.hackaton.app.service.ProductService;
+import ru.sbrf.hackaton.app.service.TeamService;
 
 import java.util.List;
 import java.util.Objects;
@@ -25,6 +26,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductMapper productMapper;
     private final ProductRepository productRepository;
     private final ComponentService componentService;
+    private final TeamService teamService;
 
     @Override
     public List<ProductDTO> getProducts() {
@@ -45,7 +47,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDTO saveProduct(ProductDTO productDTO) {
-        componentService.saveAllComponents(productDTO.getComponents());
+        if (productDTO.getComponents() != null) {
+            componentService.saveAllComponents(productDTO.getComponents());
+        }
+        if (productDTO.getTeams() != null) {
+            teamService.saveAllTeams(productDTO.getTeams());
+        }
         if (productDTO.getProducts() != null) {
             saveAllProducts(productDTO.getProducts());
         }

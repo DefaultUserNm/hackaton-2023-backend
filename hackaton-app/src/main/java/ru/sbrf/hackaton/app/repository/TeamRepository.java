@@ -14,5 +14,4 @@ public interface TeamRepository extends MongoRepository<TeamEntity, String> {
 
     @Query("{name: '?0'}")
     Optional<TeamEntity> findByName(String name);
-
 }

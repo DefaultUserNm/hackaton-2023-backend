@@ -55,7 +55,7 @@ class TeamRepositoryTest extends Specification {
         TeamEntity team = new TeamEntity()
 
         team.setName("UOV")
-        team.setUsers(List.of(new User().setFirstName("NameHere")))
+        team.setUserEntities(List.of(new User().setFirstName("NameHere")))
 
         team
     }
