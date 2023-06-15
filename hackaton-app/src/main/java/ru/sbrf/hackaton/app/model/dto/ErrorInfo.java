@@ -14,4 +14,5 @@ public class ErrorInfo {
     private int status;
     private Object error;
     private String path;
+    private String code;
 }
