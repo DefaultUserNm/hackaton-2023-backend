@@ -18,3 +18,10 @@ dependencies {
 jar {
     enabled = false
 }
+
+compileJava {
+    options.compilerArgs += [
+            '-Amapstruct.defaultComponentModel=spring',
+            '-Amapstruct.unmappedTargetPolicy=IGNORE'
+    ]
+}

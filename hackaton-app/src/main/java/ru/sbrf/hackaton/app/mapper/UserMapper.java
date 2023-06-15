@@ -9,7 +9,7 @@ import ru.sbrf.hackaton.app.model.dto.UserDto;
  * @created 15.06.2023
  * @author alexander
  */
-@Mapper(componentModel = "spring")
+@Mapper
 public interface UserMapper {
     User toUser(UserEntity entity);
 
