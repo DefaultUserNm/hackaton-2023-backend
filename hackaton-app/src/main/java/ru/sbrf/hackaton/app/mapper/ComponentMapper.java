@@ -8,4 +8,5 @@ import ru.sbrf.hackaton.app.model.dto.ComponentDTO;
 public interface ComponentMapper {
 
     ComponentDTO toComponentDTO(ComponentEntity componentEntity);
+    ComponentEntity toComponentEntity(ComponentDTO componentDTO);
 }

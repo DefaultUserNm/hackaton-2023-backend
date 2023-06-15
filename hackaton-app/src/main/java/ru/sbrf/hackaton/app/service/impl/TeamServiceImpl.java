@@ -1,4 +1,4 @@
-package ru.sbrf.hackaton.app.service;
+package ru.sbrf.hackaton.app.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -7,6 +7,7 @@ import ru.sbrf.hackaton.app.model.domain.entity.TeamEntity;
 import ru.sbrf.hackaton.app.model.dto.CreateTeamRequest;
 import ru.sbrf.hackaton.app.repository.TeamRepository;
 import ru.sbrf.hackaton.app.repository.UserRepository;
+import ru.sbrf.hackaton.app.service.TeamService;
 
 import java.util.ArrayList;
 import java.util.List;
