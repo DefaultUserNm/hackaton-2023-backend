@@ -4,6 +4,8 @@ dependencies {
     implementation libs.springBootConfigurationProcessor
     implementation libs.springStarterMongo
 
+    implementation libs.logbookSpringBootStarter
+
     implementation libs.lombok
     annotationProcessor libs.lombok
 }
