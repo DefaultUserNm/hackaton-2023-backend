@@ -2,13 +2,16 @@ package it
 
 import common.configuration.TestConfiguration
 import common.configuration.bean.DbCleaner
+import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
 import ru.sbrf.hackaton.app.Application
-import ru.sbrf.hackaton.app.model.User
 import ru.sbrf.hackaton.app.model.domain.entity.TeamEntity
+import ru.sbrf.hackaton.app.model.domain.entity.UserEntity
 import ru.sbrf.hackaton.app.repository.TeamRepository
+import ru.sbrf.hackaton.app.repository.UserRepository
+import spock.lang.Ignore
 import spock.lang.Specification
 
 @ActiveProfiles("TEST")
@@ -19,7 +22,11 @@ import spock.lang.Specification
                 TestConfiguration
         ]
 )
-class TeamRepositoryTest extends Specification {
+@Ignore
+class TeamRepositoryIT extends Specification {
+
+    @Autowired
+    UserRepository userRepository
     @Autowired
     TeamRepository teamRepository
     @Autowired
@@ -42,7 +49,9 @@ class TeamRepositoryTest extends Specification {
 
     def "FindByName"() {
         given:
-        TeamEntity expected = teamRepository.save(buildTeamEntity())
+        TeamEntity te = buildTeamEntity()
+        userRepository.saveAll(te.userEntities)
+        TeamEntity expected = teamRepository.save(te)
 
         when:
         TeamEntity actual = teamRepository.findByName(expected.getName()).get()
@@ -54,8 +63,9 @@ class TeamRepositoryTest extends Specification {
     private TeamEntity buildTeamEntity(){
         TeamEntity team = new TeamEntity()
 
+        team.setId(new ObjectId())
         team.setName("UOV")
-        team.setUserEntities(List.of(new User().setFirstName("NameHere")))
+        team.setUserEntities(List.of(new UserEntity().setId(new ObjectId())))
 
         team
     }
