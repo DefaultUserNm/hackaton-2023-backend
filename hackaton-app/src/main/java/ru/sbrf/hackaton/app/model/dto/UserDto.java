@@ -9,5 +9,9 @@ import lombok.Data;
 @Data
 public class UserDto {
     private String login;
-    private String passwordHash;
+    private String lastName;
+    private String firstName;
+    private String middleName;
+    private String phone;
+    private String email;
 }
