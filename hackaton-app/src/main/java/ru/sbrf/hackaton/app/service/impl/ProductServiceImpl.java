@@ -11,6 +11,7 @@ import ru.sbrf.hackaton.app.repository.ProductRepository;
 import ru.sbrf.hackaton.app.service.ComponentService;
 import ru.sbrf.hackaton.app.service.ProductService;
 
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -34,10 +35,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void saveProduct(ProductDTO productDTO) {
+    public ProductDTO saveProduct(ProductDTO productDTO) {
         componentService.saveAllComponents(productDTO.getComponents());
-        saveAllProducts(productDTO.getProducts());
+        if (productDTO.getProducts() != null) {
+            saveAllProducts(productDTO.getProducts());
+        }
         productRepository.save(productMapper.toProductEntity(productDTO));
+        return productDTO;
     }
 
     private ProductEntity handleProductEntity(Optional<ProductEntity> optionalProductEntity) {
@@ -48,6 +52,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     private void saveAllProducts(Set<ProductDTO> products) {
-        products.forEach(this::saveProduct);
+        products.stream()
+                .filter(Objects::nonNull)
+                .forEach(this::saveProduct);
     }
 }
