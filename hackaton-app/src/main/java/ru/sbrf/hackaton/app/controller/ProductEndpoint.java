@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.sbrf.hackaton.app.model.dto.ProductDTO;
-import ru.sbrf.hackaton.app.service.impl.ProductServiceImpl;
+import ru.sbrf.hackaton.app.service.ProductService;
 
 @RestController
 @RequestMapping(path = "/api/v1/products", produces = "application/json")
@@ -14,11 +14,11 @@ import ru.sbrf.hackaton.app.service.impl.ProductServiceImpl;
 @Validated
 public class ProductEndpoint {
 
-    private final ProductServiceImpl productServiceImpl;
+    private final ProductService productService;
 
     @GetMapping
     public ResponseEntity<ProductDTO> getProduct(@PathVariable(value = "id") String productId) {
-        ProductDTO productDTO = productServiceImpl.getProduct(new ObjectId(productId));
+        ProductDTO productDTO = productService.getProduct(new ObjectId(productId));
         return ResponseEntity.ok(productDTO);
     }
 }
