@@ -13,6 +13,7 @@ import org.springframework.web.filter.GenericFilterBean;
 import ru.sbrf.hackaton.app.configuration.properties.AuthenticationProperties;
 import ru.sbrf.hackaton.app.exception.AuthenticationException;
 import ru.sbrf.hackaton.app.model.User;
+import ru.sbrf.hackaton.app.service.UserInfoManager;
 import ru.sbrf.hackaton.app.service.UserService;
 
 import java.io.IOException;
@@ -31,6 +32,7 @@ public class HackatonSecurityFilter extends GenericFilterBean {
 
     private final UserService userService;
     private final AuthenticationProperties properties;
+    private final UserInfoManager userInfoManager;
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)
@@ -41,13 +43,12 @@ public class HackatonSecurityFilter extends GenericFilterBean {
             try {
                 User user = getUser(request);
                 log.debug("Authenticated user: {}", user);
+                userInfoManager.setUser(user);
             } catch (Exception ex) {
                 log.error("Failed to authenticate user: {}", getStackTrace(ex));
                 ((HttpServletResponse) servletResponse).sendError(HttpServletResponse.SC_FORBIDDEN);
                 return;
             }
-
-            // TODO add user into context
         }
         chain.doFilter(servletRequest, servletResponse);
     }

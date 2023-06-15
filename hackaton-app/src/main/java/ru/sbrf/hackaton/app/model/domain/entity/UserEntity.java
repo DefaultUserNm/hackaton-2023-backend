@@ -25,5 +25,15 @@ public class UserEntity {
 
     private String passwordHash;
 
+    private String lastName;
+
+    private String firstName;
+
+    private String middleName;
+
+    private String phone;
+
+    private String email;
+
     private List<Session> sessions;
 }

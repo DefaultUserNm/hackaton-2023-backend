@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.GenericFilterBean;
 import ru.sbrf.hackaton.app.configuration.properties.AuthenticationProperties;
+import ru.sbrf.hackaton.app.service.UserInfoManager;
 import ru.sbrf.hackaton.app.service.UserService;
 
 /*
@@ -21,7 +22,7 @@ public class HackatonSecurityFilterConfiguration {
 
     @Bean
     public GenericFilterBean hackatonSecurityFilter(
-            UserService userService, AuthenticationProperties properties) {
-        return new HackatonSecurityFilter(userService, properties);
+            UserService userService, AuthenticationProperties properties, UserInfoManager manager) {
+        return new HackatonSecurityFilter(userService, properties, manager);
     }
 }

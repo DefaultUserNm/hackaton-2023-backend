@@ -55,11 +55,10 @@ public class UserServiceImpl implements UserService {
         UserEntity result;
         if (user.isPresent()) {
             result = user.get();
-            result.setPasswordHash(calculateHash(request.getPassword()));
+            fillDefaultFields(result, request);
         } else {
-            result = new UserEntity()
+            result = fillDefaultFields(new UserEntity(), request)
                     .setLogin(request.getLogin())
-                    .setPasswordHash(calculateHash(request.getPassword()))
                     .setSessions(new ArrayList<>());
         }
 
@@ -82,5 +81,15 @@ public class UserServiceImpl implements UserService {
 
     private String calculateHash(String password) {
         return DigestUtils.sha256Hex(password);
+    }
+
+    private UserEntity fillDefaultFields(UserEntity entity, CreateUserRequest request) {
+        return entity
+                .setPasswordHash(calculateHash(request.getPassword()))
+                .setLastName(request.getLastName())
+                .setFirstName(request.getFirstName())
+                .setMiddleName(request.getMiddleName())
+                .setEmail(request.getEmail())
+                .setPhone(request.getPhone());
     }
 }
