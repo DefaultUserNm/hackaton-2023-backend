@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: hackaton-app
+  profiles:
+    active:
+      - PROM
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics,health,prometheus
