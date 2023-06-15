@@ -7,7 +7,6 @@ import ru.sbrf.hackaton.app.exception.HackatonBaseException;
 import ru.sbrf.hackaton.app.mapper.ProductMapper;
 import ru.sbrf.hackaton.app.model.domain.entity.ProductEntity;
 import ru.sbrf.hackaton.app.model.dto.ProductDTO;
-import ru.sbrf.hackaton.app.repository.ComponentRepository;
 import ru.sbrf.hackaton.app.repository.ProductRepository;
 import ru.sbrf.hackaton.app.service.ProductService;
 
@@ -20,7 +19,6 @@ import static ru.sbrf.hackaton.app.exception.HackatonBaseExceptionCode.FAILED_TO
 public class ProductServiceImpl implements ProductService {
 
     private final ProductMapper productMapper;
-    private final ComponentRepository componentRepository;
     private final ProductRepository productRepository;
 
     @Override
