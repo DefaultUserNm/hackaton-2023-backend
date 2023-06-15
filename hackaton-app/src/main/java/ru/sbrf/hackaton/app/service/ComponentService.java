@@ -7,7 +7,7 @@ import java.util.Set;
 
 public interface ComponentService {
 
-    ComponentEntity saveComponent(ComponentDTO componentDTO);
+    ComponentDTO saveComponent(ComponentDTO componentDTO);
 
     void saveAllComponents(Set<ComponentDTO> components);
 

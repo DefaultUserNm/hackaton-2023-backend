@@ -16,19 +16,13 @@ import java.util.stream.Collectors;
 public class ComponentServiceImpl implements ComponentService {
 
     private final ComponentRepository componentRepository;
+    private final ComponentMapper componentMapper;
 
     @Override
-    public ComponentEntity saveComponent(ComponentDTO componentDTO) {
-
-
-        ComponentEntity componentEntity = new ComponentEntity();
-
-        componentRepository.save(componentEntity);
-        return null;
+    public ComponentDTO saveComponent(ComponentDTO componentDTO) {
+        componentRepository.save(componentMapper.toComponentEntity(componentDTO));
+        return componentDTO;
     }
-
-    private final ComponentMapper componentMapper;
-    private final ComponentRepository componentRepository;
 
     @Override
     public void saveAllComponents(Set<ComponentDTO> components) {
