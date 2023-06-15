@@ -56,7 +56,9 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     private ResponseEntity<Object> handleException(Exception ex, WebRequest request, HttpStatus status) {
         log.error("Failed to complete request to '{}': {}", getUri(request), getStackTrace(ex));
-        return new ResponseEntity<>(buildErrorInfo(ex, request), null, status);
+        ErrorInfo errorInfo = buildErrorInfo(ex, request)
+                .setStatus(status.value());
+        return new ResponseEntity<>(errorInfo, null, status);
     }
 
     private String getUri(WebRequest request) {
