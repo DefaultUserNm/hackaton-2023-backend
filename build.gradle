@@ -23,13 +23,6 @@ allprojects {
         mavenCentral()
     }
 
-    compileJava {
-        options.compilerArgs += [
-                '-Amapstruct.defaultComponentModel=spring',
-                '-Amapstruct.unmappedTargetPolicy=IGNORE'
-        ]
-    }
-
     tasks.withType(JavaCompile).tap {
         configureEach {
             options.release = 17
