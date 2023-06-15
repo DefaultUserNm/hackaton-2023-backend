@@ -18,12 +18,14 @@ import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.springframework.web.util.WebUtils;
+import ru.sbrf.hackaton.app.exception.HackatonBaseException;
 import ru.sbrf.hackaton.app.model.dto.ErrorInfo;
 
 import java.util.Date;
 
 import static org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static ru.sbrf.hackaton.app.exception.HackatonBaseExceptionCode.INTERNAL_ERROR;
 
 /*
  * @created 15.06.2023
@@ -72,6 +74,13 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                 .setTimestamp(new Date())
                 .setStatus(status.value())
                 .setError(ex.getMessage())
-                .setPath(getUri(request));
+                .setPath(getUri(request))
+                .setCode(resolveCode(ex));
+    }
+
+    private String resolveCode(Exception ex) {
+        return (ex instanceof HackatonBaseException hbe)
+                ? hbe.getCode()
+                : INTERNAL_ERROR.name();
     }
 }

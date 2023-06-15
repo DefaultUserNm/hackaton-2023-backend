@@ -1,11 +1,14 @@
 package ru.sbrf.hackaton.app.exception;
 
+import lombok.Getter;
+
 /*
  * @created 15.06.2023
  * @author alexander
  */
 public class HackatonBaseException extends RuntimeException {
 
+    @Getter
     private final String code;
 
     public HackatonBaseException(String code) {
