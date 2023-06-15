@@ -12,7 +12,6 @@ import spock.lang.Specification
 
 import static common.testDataBuilder.DocumentEntityDataBuilder.buildDocumentEntity
 
-
 @ActiveProfiles("TEST")
 @SpringBootTest(
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,

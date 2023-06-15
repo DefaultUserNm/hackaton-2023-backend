@@ -8,7 +8,7 @@ import ru.sbrf.hackaton.app.model.dto.ProductDTO;
 @Mapper(uses = { ComponentMapper.class })
 public interface ProductMapper {
 
-    @Mapping(target = "componentDTOs", source = "componentEntities")
-    @Mapping(target = "productDTOs", source = "productEntities")
+    @Mapping(target = "components", source = "productEntity.componentEntities")
+    @Mapping(target = "products", source = "productEntity.productEntities")
     ProductDTO toProductDTO(ProductEntity productEntity);
 }

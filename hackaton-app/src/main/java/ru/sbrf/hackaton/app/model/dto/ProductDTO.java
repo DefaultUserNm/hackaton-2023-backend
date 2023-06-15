@@ -10,7 +10,7 @@ public class ProductDTO {
 
     ObjectId id;
     String name;
-    Set<ProductDTO> productDTOs;
-    Set<ComponentDTO> componentDTOs;
+    Set<ProductDTO> products;
+    Set<ComponentDTO> components;
     // Set<Team> teams;
 }
